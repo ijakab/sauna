@@ -1,5 +1,7 @@
 export const START_SYMBOL = '@'
 
+export const END_SYMBOL = 'x'
+
 export const CHAR_REGEX = /[A-Z]/
 
 export const TURN_SYMBOL = '+'

@@ -4,6 +4,7 @@ import {UnexpectedError} from '../errors/UnexpectedError';
 import {START_SYMBOL, VALID_SYMBOL_REGEX} from '../config';
 import {NoStartingSymbolError} from '../errors/NoStartingSymbolError';
 import {MultipleStartingSymbolError} from '../errors/MultipleStartingSymbolError';
+import {MissingSymbolError} from '../errors/MissingSymbolError';
 
 export class PointMap {
     private grid: Point[][] = [];
@@ -51,5 +52,14 @@ export class PointMap {
         if (startingPoints.length === 0) throw new NoStartingSymbolError()
         if (startingPoints.length > 1) throw new MultipleStartingSymbolError()
         return startingPoints[0]
+    }
+
+    getPointWithSymbol(symbol: string): Point {
+        for (const point of this.flatGrid) {
+            if (point.getValue() === symbol) {
+                return point
+            }
+        }
+        throw new MissingSymbolError(symbol)
     }
 }

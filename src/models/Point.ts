@@ -24,6 +24,10 @@ export class Point {
         this.visited = true
     }
 
+    isVisited() {
+        return this.visited
+    }
+
     getValue() {
         return this.value
     }
