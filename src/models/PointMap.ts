@@ -2,7 +2,7 @@ import { Point } from './Point';
 import {InvalidCharacterError} from '../errors/InvalidCharacterError';
 import {UnexpectedError} from '../errors/UnexpectedError';
 
-const VALID_CHARACTERS = /[A-Z]-\|\+/
+const VALID_CHARACTERS = /[A-Z]-\|\+@x/
 
 export class PointMap {
     private grid: Point[][] = [];
@@ -26,7 +26,7 @@ export class PointMap {
     }
 
     setPoint(row: number, col: number, value: string) {
-        if (!value.match(VALID_CHARACTERS)) {
+        if (value.length !== 1 || !value.match(VALID_CHARACTERS)) {
             throw new InvalidCharacterError(value)
         }
         const point = this.getPoint(row, col)
