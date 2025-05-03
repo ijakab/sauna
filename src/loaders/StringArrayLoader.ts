@@ -1,4 +1,4 @@
-import { PointMap } from '../models/PointMap';
+import { PointMap } from '../map/PointMap';
 import {ILoader} from './ILoader';
 
 // this represents a way to load Map class from Input as array of strings.
@@ -15,7 +15,9 @@ export class StringArrayLoader implements ILoader {
         for (let i = 0; i < this.input.length; i++) {
             const row = this.input[i]
             for (let j = 0; j < row.length; j++) {
-                map.setPoint(i, j, row[j])
+                if (row[j] !== ' ') { // we want to ignore empty lines as it is easier to set input with them
+                    map.setPoint(i, j, row[j])
+                }
             }
         }
         return map

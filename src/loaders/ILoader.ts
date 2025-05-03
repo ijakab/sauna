@@ -1,4 +1,4 @@
-import {PointMap} from '../models/PointMap';
+import {PointMap} from '../map/PointMap';
 
 export interface ILoader {
     loadMap(): PointMap

@@ -1,7 +1,7 @@
 import { Point } from './Point';
 import {InvalidCharacterError} from '../errors/InvalidCharacterError';
 import {UnexpectedError} from '../errors/UnexpectedError';
-import {START_SYMBOL, VALID_SYMBOL_REGEX} from '../config';
+import {START_SYMBOL, VALID_SYMBOL_REGEX} from '../Config';
 import {NoStartingSymbolError} from '../errors/NoStartingSymbolError';
 import {MultipleStartingSymbolError} from '../errors/MultipleStartingSymbolError';
 import {MissingSymbolError} from '../errors/MissingSymbolError';
@@ -31,8 +31,11 @@ export class PointMap {
     }
 
     // useful if we want to treat empty points same as out of bounds or non existing
-    getNonEmpty(row: number, col: number): Point {
-        return this.grid?.[row]?.[col];
+    getNonEmptyPoint(row: number, col: number): Point | undefined {
+        const point = this.grid?.[row]?.[col];
+        if (point?.getValue() !== null) {
+            return point
+        }
     }
 
     getPoint(row: number, col: number): Point {
