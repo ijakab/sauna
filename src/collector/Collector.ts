@@ -34,7 +34,7 @@ export class Collector {
 
         const currentStep = new Step(this.map, currentPoint, previousPoint)
         currentStep.validateLoop()
-        currentPoint.visited = true
+        currentPoint.visited++
 
         const nextPoint = currentStep.findNext()
         if (nextPoint !== null) {

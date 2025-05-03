@@ -25,7 +25,8 @@ export class Step {
         //   + +
         // At the start we would see that there is an x char, but it is very hard to prove that there is an actual path from start to end char
         // this may not be a good solution in more complex problems, but since forks are not allowed this is a valid solution for our conditions
-        if (this.currentPoint.visited && this.previousPoint?.visited) throw new LoopDetectedError()
+        if (!this.previousPoint) return
+        if (this.currentPoint.visited && this.previousPoint.visited > 1) throw new LoopDetectedError()
     }
 
     public findNext(): Point | null {

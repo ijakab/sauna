@@ -6,7 +6,7 @@ export class Point {
     public row: number;
     public col: number;
     private value: string | null; // null representing empty space
-    public visited: boolean;
+    public visited = 0;
 
     public isChar = false
     public isTurn = false
@@ -16,7 +16,6 @@ export class Point {
         this.row = row;
         this.col = col;
         this.value = value;
-        this.visited = false;
     }
 
     setValue(value: string | null) {
