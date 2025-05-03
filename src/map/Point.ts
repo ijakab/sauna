@@ -57,10 +57,10 @@ export class Point {
         }
         if (this.col === adjacentPoint.col) {
             if (this.row === adjacentPoint.row + 1) {
-                return Direction.DOWN
+                return Direction.UP
             }
             if (this.row === adjacentPoint.row - 1) {
-                return Direction.UP
+                return Direction.DOWN
             }
         }
         throw new UnexpectedError(`Points ${this.row}:${this.col} and ${adjacentPoint.row}:${adjacentPoint.col} are not adjacent`)

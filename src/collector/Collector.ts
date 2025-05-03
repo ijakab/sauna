@@ -15,6 +15,11 @@ export class Collector {
         this.map.getPointWithSymbol(END_SYMBOL) // validate that end symbol exists... but we don't need it right away
         const startingPoint = this.map.getStartingPoint()
         this.collectOnPoint(startingPoint)
+
+        return {
+            letters: this.letters.join(''),
+            path: this.path.join('')
+        }
     }
 
     collectOnPoint(currentPoint: Point, previousPoint?: Point) {
