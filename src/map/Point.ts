@@ -1,4 +1,4 @@
-import {CHAR_REGEX, TURN_SYMBOL} from '../Config';
+import {CHAR_REGEX, DIRECTION_KEEPER_REGEX, TURN_SYMBOL} from '../Config';
 import {Direction} from '../Direction';
 import {UnexpectedError} from '../errors/UnexpectedError';
 
@@ -10,6 +10,7 @@ export class Point {
 
     public isChar = false
     public isTurn = false
+    public isDirectionKeeper = false
 
     constructor(row: number, col: number, value: string | null) {
         this.row = row;
@@ -22,6 +23,7 @@ export class Point {
         this.value = value
         this.isChar = Boolean(value?.match(CHAR_REGEX))
         this.isTurn = value === TURN_SYMBOL
+        this.isDirectionKeeper = Boolean(value?.match(DIRECTION_KEEPER_REGEX))
     }
 
     getValue() {

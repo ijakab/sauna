@@ -4,6 +4,8 @@ export const END_SYMBOL = 'x'
 
 export const CHAR_REGEX = /[A-Z]/
 
+export const DIRECTION_KEEPER_REGEX = /[|-]/
+
 export const TURN_SYMBOL = '+'
 
 export const VALID_SYMBOL_REGEX = /[A-Z-|+@x]/

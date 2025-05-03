@@ -19,8 +19,8 @@ describe('start validation rules', () => {
     it('should throw loop detected error if a program would loop with no end', () => {
         const collector = resolveCollectorFromMap(
             `
-                 @--++
-                   x++
+                 @++
+                  ++x
             `
         )
         expect(() => collector.collect()).toThrow(LoopDetectedError)
