@@ -43,4 +43,24 @@ export class Point {
         }
         throw new UnexpectedError(`Unknown direction ${direction}`)
     }
+
+    directionFrom(adjacentPoint: Point) {
+        if (this.row === adjacentPoint.row) {
+            if (this.col === adjacentPoint.col + 1) {
+                return Direction.LEFT
+            }
+            if (this.col === adjacentPoint.col - 1) {
+                return Direction.RIGHT
+            }
+        }
+        if (this.col === adjacentPoint.col) {
+            if (this.row === adjacentPoint.row + 1) {
+                return Direction.DOWN
+            }
+            if (this.row === adjacentPoint.row - 1) {
+                return Direction.UP
+            }
+        }
+        throw new UnexpectedError(`Points ${this.row}:${this.col} and ${adjacentPoint.row}:${adjacentPoint.col} are not adjacent`)
+    }
 }

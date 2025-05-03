@@ -5,7 +5,9 @@ import {Direction} from '../Direction';
 import {MultipleStartingPathsError} from '../errors/MultipleStartingPathsError';
 import {MissingSymbolError} from '../errors/MissingSymbolError';
 import {NoStartingPathsError} from '../errors/NoStartingPathsError';
-import {END_SYMBOL} from '../Config';
+import {END_SYMBOL, TURN_SYMBOL} from '../Config';
+import {ForkInPathError} from '../errors/ForkInPathError';
+import {FakeTurnError} from '../errors/FakeTurnError';
 
 export class Step {
     constructor(
@@ -28,22 +30,23 @@ export class Step {
     }
 
     public findNext(): Point | null {
-        if (this.currentPoint.getValue() === END_SYMBOL) { // stop collecting after end symbol
+        const currentSymbol = this.currentPoint.getValue()
+        if (currentSymbol === END_SYMBOL) { // stop collecting after end symbol
             return null
         }
         if (!this.previousPoint) {
             return this.findNextOnStartingPoint()
         }
+        if (currentSymbol === TURN_SYMBOL) {
+            return this.findNextOnTurn()
+        }
 
-        // todo throw unexpected error instead
-        return null
+        throw new Error(`The system did not find next point for ${this.currentPoint.row}:${this.currentPoint.col} (${this.currentPoint.getValue()})`)
     }
 
     private findNextOnStartingPoint(): Point {
         // on starting point, we can find exactly one adjacent non-empty point
-        const adjacentPoints = Object.values(Direction)
-            .map(direction => this.map.getNonEmptyPoint(...this.currentPoint.adjacentIndex(direction)))
-            .filter(Boolean)
+        const adjacentPoints = this.getPointsInDirection(Object.values(Direction))
         if (adjacentPoints.length > 1) {
             throw new MultipleStartingPathsError()
         }
@@ -51,5 +54,31 @@ export class Step {
             throw new NoStartingPathsError()
         }
         return adjacentPoints[0] as Point
+    }
+
+    private findNextOnTurn(): Point {
+        const direction = this.currentPoint.directionFrom(this.previousPoint as Point)
+        const opposingDirections = direction === Direction.LEFT || Direction.RIGHT ?
+            [Direction.DOWN, Direction.UP] : [Direction.LEFT, Direction.RIGHT]
+        const opposingPoints = this.getPointsInDirection(opposingDirections)
+
+        if (opposingPoints.length > 1) {
+            throw new ForkInPathError()
+        }
+        if (opposingPoints.length === 0) {
+            throw new FakeTurnError()
+        }
+
+        return opposingPoints[0] as Point
+    }
+
+    private getPointsInDirection(directions: Direction[]) {
+        const adjacentIndexes = directions.map(
+            direction => this.currentPoint.adjacentIndex(direction)
+        )
+        const adjacentPoints = adjacentIndexes
+            .map(indexes => this.map.getNonEmptyPoint(...indexes))
+
+        return adjacentPoints.filter(Boolean)
     }
 }
