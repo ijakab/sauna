@@ -3,7 +3,7 @@ import {NoStartingSymbolError} from '../src/errors/NoStartingSymbolError';
 import {MultipleStartingSymbolError} from '../src/errors/MultipleStartingSymbolError';
 import {MultipleStartingPathsError} from '../src/errors/MultipleStartingPathsError';
 
-describe('validation rules', () => {
+describe('start validation rules', () => {
     it('should throw error if a map does not have a starting point', () => {
         const collector = resolveCollectorFromMap(
             `

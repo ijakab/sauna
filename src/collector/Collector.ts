@@ -35,7 +35,7 @@ export class Collector {
             // a "contract" with step is to return null if it reached end symbol
             // instead of this class checking for the specific symbol.
             // this way we keep collector agnostic about meaning of specific symbols
-            this.collectOnPoint(nextPoint, previousPoint)
+            this.collectOnPoint(nextPoint, currentPoint)
         }
     }
 }
