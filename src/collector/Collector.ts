@@ -25,11 +25,9 @@ export class Collector {
     collectOnPoint(currentPoint: Point, previousPoint?: Point) {
         const currentValue = currentPoint.getValue()
         if (currentValue === null) throw new UnexpectedError(`Collector detected on null point ${currentPoint.row}:${currentPoint.col}`)
-        if (!currentPoint.visited) {
-            this.path.push(currentValue)
-            if (currentPoint.isChar) {
-                this.letters.push(currentValue)
-            }
+        this.path.push(currentValue)
+        if (currentPoint.isChar && !currentPoint.visited) {
+            this.letters.push(currentValue)
         }
 
         const currentStep = new Step(this.map, currentPoint, previousPoint)
