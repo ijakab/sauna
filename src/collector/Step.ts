@@ -3,7 +3,6 @@ import {PointMap} from '../map/PointMap';
 import {LoopDetectedError} from '../errors/LoopDetectedError';
 import {Direction, OpposingDirections, OrthogonalDirections} from '../Direction';
 import {MultipleStartingPathsError} from '../errors/MultipleStartingPathsError';
-import {MissingSymbolError} from '../errors/MissingSymbolError';
 import {NoStartingPathsError} from '../errors/NoStartingPathsError';
 import {END_SYMBOL, TURN_SYMBOL} from '../Config';
 import {ForkInPathError} from '../errors/ForkInPathError';
