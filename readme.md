@@ -1,4 +1,4 @@
-# Software sauna coding challenge
+# Software Sauna coding challenge
 
 Made a solution according to `task.md` with OO principles, using Typescript with node.js and Jest for testing
 
@@ -45,6 +45,7 @@ That being said, there are more things I could have done for this task. It could
 - An interactive way to input the map (I could serve small webserver with a simple textarea input)
 - **Linting** - I was very sad I did not add lint at the start, especially since I started this before vacation and ended it once I returned. So I have many styling inconsistencies, especially with semicolon usage.
 - Dockerfile - for reviewers without node runtime
+- Upgrading jest config - Some deprecation warnings are shown when tests are run
 
 And surely many other points.
 
