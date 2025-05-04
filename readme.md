@@ -32,7 +32,7 @@ npm run dev
 
 I hope I have taken a good OO approach to this problem. Companies may have a different opinions on OO, but I think it is a good approach for this specific problem
 
-I tried to demonstrate most concepts as they would be in production and delivery quality and maintainable code. However, some shortcuts have been taken, and I left various comments in specific place - mostly in places where point is already proven, and additional details would take a lot of time.
+I tried to demonstrate most concepts as they would be in production and deliver quality and maintainable code. However, some shortcuts have been taken, and I left various comments in specific places - mostly in places where point is already proven, and additional details would take a lot of time.
 
 **Please find my comments and readme files for additional reasoning behind some concepts**
 
@@ -49,4 +49,4 @@ That being said, there are more things I could have done for this task. It could
 
 And surely many other points.
 
-Even so, I hope you will find a solution well-made, maintainable and tested.
+Even so, I hope you will find the solution well-made, maintainable and tested.
