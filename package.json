@@ -5,7 +5,7 @@
   "main": "src/index.ts",
   "scripts": {
     "test": "jest",
-    "dev": "ts-node src/index.ts"
+    "dev": "ts-node src/run.ts"
   },
   "author": "Ivan Jakab",
   "license": "ISC",
