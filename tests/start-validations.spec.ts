@@ -6,7 +6,7 @@ import {InvalidCharacterError} from '../src/errors/InvalidCharacterError';
 
 describe('start validation rules', () => {
     it('should throw error if an unexpected symbol is encountered', () => {
-        const collector = expect(() => resolveCollectorFromMap(
+        expect(() => resolveCollectorFromMap(
             `
                  @-A--+
                       |
